@@ -1,53 +1,115 @@
 ﻿using System;
 using System.ComponentModel.Design;
 
+using System.Collections.Generic;
 namespace FizzBuzz
 {
     class Program
     {
-        static void Main(string[] args)
+   
+     static void Main(string[] args)
+
+     {
+
+         for (var counter = 1; counter <= 100; counter++)
+
+         {
+             var parts = GetParts(counter);
+
+
+
+             if (counter % 17 == 0)
+
+             {
+
+                 parts.Reverse();
+
+             }
+
+
+
+             if (parts.Count == 0)
+
+             {
+
+                  Console.WriteLine(counter);
+
+             }
+
+             else
+
+             {
+
+                    Console.WriteLine(string.Join("", parts));
+
+             }
+
+         }
+     }
+
+
+
+     static List<string> GetParts(int number)
+
+    {
+
+     var parts = new List<string>();
+
+     //List<string> parts = new List<string>();       
+
+      if (number % 11 == 0) {
+
+        if (number % 13 == 0)
+
         {
-            for (int i = 1; i <= 100; i++)
-            {
-                if (IsMultipleOf3(i))
-                {
-                    Console.WriteLine("Fizz");
-                }
-                else if (IsMultipleOf5(i))
-                {
-                    Console.WriteLine("Buzz");
-                }
-                else
-                {
-                    Console.WriteLine(i);
-                }
-            }
+
+            parts.Add("Fezz");
+
         }
+
+        parts.Add("Bong");
+      }
+      else
+      {
+          if (number % 3 == 0)
+
+          {
+
+              parts.Add("Fizz");
+
+          }
+
+          if(number % 13 == 0)
+          {
         
-        static Boolean IsMultipleOf3(int i)
-        {
-            if (i%3>=1)
-            {
-                return true;
-                
-            }
-            else
-            {
-                return false;
-            }
-           
-        }
-        static Boolean IsMultipleOf5(int i)
-        {
-            if (i%5>=1)
-            {
-                return true;
-                
-            }
-            else
-            {
-                return false;
-            }
-        }
+                parts.Add("Fezz");
+        
+          }
+
+          if (number % 5 == 0)
+
+          {
+
+              parts.Add("Buzz");
+
+          }
+
+          if (number % 7 == 0)
+
+          {
+
+              parts.Add("Bang");
+
+          }
+      }
+
+
+
+
+
+      return parts;
+
+    }
+
     }
 }
